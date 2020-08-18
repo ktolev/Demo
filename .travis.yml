@@ -8,3 +8,17 @@ before_install:
 script:
 
  - docker run -e CI=true ktolev/demo npm run test 
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "demo"
+  env: "Demo-env"
+  bucker_name: "elasticbeanstalk-us-east-2-127586223472"
+  bucker_path: "demo"
+  on:
+   branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
+   
